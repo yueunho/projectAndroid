@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -9,8 +10,13 @@ import android.view.View;
 import android.view.Menu;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Button;
+
+import com.example.myapplication.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity {
+
+    public static final int sub = 1001;/*다른 액티비티를 띄우기 위한 요청코드(상수)*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +33,14 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 Log.d("test","test");
                 Log.d("name","Taeha");
+            }
+        });
+
+        Button button = findViewById(R.id.button4);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivityForResult(intent,sub);//액티비티 띄우기
             }
         });
     }
